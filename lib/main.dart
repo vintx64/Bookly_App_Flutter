@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
-import 'Features/Splash/presntation/views/splash_view.dart';
+import 'Features/Splash/presentation/views/splash_view.dart';
 import 'constants.dart';
 
 void main() {
