@@ -65,6 +65,9 @@ flutter:
     - family: Montserrat
       fonts:
         - asset: assets/fonts/Montserrat-Regular.ttf
+    - family: GT-Sectra-Fine
+      fonts:
+        - asset: assets/fonts/GT-Sectra-Fine-Regular.ttf
         
   
   # For details regarding fonts from package dependencies,
