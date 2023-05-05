@@ -5,19 +5,19 @@ import 'package:equatable/equatable.dart';
 
 part 'featured_books_cubit_state.dart';
 
-class FeaturedBooksCubit extends Cubit<FeaturedBooksCubitState> {
-  FeaturedBooksCubit(this.homeRepo) : super(FeaturedBooksCubitInitial());
+class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
+  FeaturedBooksCubit(this.homeRepo) : super(FeaturedBooksInitial());
   final HomeRepo homeRepo;
   Future<void> fetchFeaturdBooks() async {
-    emit(FeaturedBooksCubitLoading());
+    emit(FeaturedBooksLoading());
     var result = await homeRepo.featchFeaturedBooks();
     result.fold((failure) {
       emit(
-        FeaturedBooksCubitFailure(failure.errMessage),
+        FeaturedBooksFailure(failure.errMessage),
       );
     }, (books) {
       emit(
-        FeaturedBooksCubitSucess(books),
+        FeaturedBooksSucess(books),
       );
     });
   }
