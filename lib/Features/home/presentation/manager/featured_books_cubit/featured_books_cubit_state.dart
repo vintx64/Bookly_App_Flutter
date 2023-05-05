@@ -1,4 +1,4 @@
-part of 'featured_books_cubit_cubit.dart';
+part of 'featured_books_cubit.dart';
 
 abstract class FeaturedBooksCubitState extends Equatable {
   const FeaturedBooksCubitState();
