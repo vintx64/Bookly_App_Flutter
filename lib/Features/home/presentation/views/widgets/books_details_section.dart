@@ -15,7 +15,10 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .2),
-          child: const CustomBookImage(),
+          child: const CustomBookImage(
+            imgUrl:
+                'https://img.freepik.com/premium-vector/ninja-boy-meditation-mode_7814-625.jpg',
+          ),
         ),
         const SizedBox(
           height: 43,
