@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
-import '../../../../home/presentation/views/widgets/best_seller_list_view_item.dart';
 import 'custom_search_text_field.dart';
 
 class SearchViewBody extends StatelessWidget {
@@ -42,7 +41,8 @@ class SearchResultListView extends StatelessWidget {
         itemBuilder: ((context, index) {
           return const Padding(
             padding: EdgeInsets.symmetric(vertical: 10),
-            child: BookListViewItem(),
+            // child: BookListViewItem(),
+            child: Text('data'),
           );
         }));
   }
