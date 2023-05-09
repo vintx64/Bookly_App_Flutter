@@ -51,6 +51,9 @@
 <array>
   <string>https</string>
 </array>
-
+<dict>
+	<key>NSAllowArbitraryLoads</key>
+	<true/>
+</dict>
 </dict>
 </plist>
