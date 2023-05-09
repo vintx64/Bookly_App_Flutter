@@ -7,8 +7,8 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/styles.dart';
 import 'book_rating.dart';
 
-class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({
+class NewsetBooksListViewItem extends StatelessWidget {
+  const NewsetBooksListViewItem({
     super.key,
     required this.bookModel,
   });

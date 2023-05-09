@@ -15,7 +15,7 @@ class BooksAction extends StatelessWidget {
         children: [
           const Expanded(
               child: CustomBtn(
-            textBtn: '19.99 \$',
+            textBtn: 'Free',
             fontSize: 16,
             backgroundColor: Colors.white,
             textColor: Colors.black,

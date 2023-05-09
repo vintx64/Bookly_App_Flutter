@@ -1,7 +1,7 @@
 import 'package:bookly/constants.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
-import 'best_seller_list_view.dart';
+import 'newset_books_list_view.dart';
 import 'custom_app_bar.dart';
 import 'featured_books_list_view.dart';
 
@@ -41,7 +41,7 @@ class HomeViewBody extends StatelessWidget {
         const SliverToBoxAdapter(
           child: Padding(
             padding: kHomePadding,
-            child: BestSellerListView(),
+            child: NewsetBooksListView(),
           ),
         ),
       ],
