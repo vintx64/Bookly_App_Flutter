@@ -5,31 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../home/data/models/bookly_model/book_model.dart';
 
-class SearchView extends StatefulWidget {
-  const SearchView({super.key, required this.bookModel});
-
-  final BookModel bookModel;
-
-  @override
-  State<SearchView> createState() => _SearchViewState();
-}
-
-class _SearchViewState extends State<SearchView> {
-  @override
-  void initState() {
-    BlocProvider.of<SearchCubit>(context)
-        .fetchSearchedBooks(bookName: widget.bookModel.volumeInfo.title![0]);
-    super.initState();
-  }
-
+class SearchView extends StatelessWidget {
+  const SearchView({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SearchViewBody(
-          bookModel: widget.bookModel,
-        ),
-      ),
+    return const Scaffold(
+      body: SearchViewBody(),
     );
   }
 }
