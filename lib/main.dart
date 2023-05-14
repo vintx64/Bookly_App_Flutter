@@ -1,3 +1,6 @@
+import 'package:bookly/Features/Search/data/repos/search_repo_impl.dart';
+import 'package:bookly/Features/Search/presentation/manager/search_cubit/search_cubit.dart';
+import 'package:bookly/Features/home/data/models/bookly_model/book_model.dart';
 import 'package:bookly/Features/home/data/repos/home_repo_impl.dart';
 import 'package:bookly/Features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly/Features/home/presentation/manager/newset_books_cubit/newset_books_cubit.dart';
@@ -13,7 +16,9 @@ void main() {
 }
 
 class BooklyApp extends StatelessWidget {
-  const BooklyApp({super.key});
+  const BooklyApp({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
