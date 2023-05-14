@@ -1,9 +1,14 @@
+import 'package:bookly/Features/home/data/models/bookly_model/book_model.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
 import 'custom_search_text_field.dart';
 
 class SearchViewBody extends StatelessWidget {
-  const SearchViewBody({super.key});
+  const SearchViewBody({
+    super.key,
+    required this.bookModel,
+  });
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,10 @@ class SearchViewBody extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          const Expanded(child: SearchResultListView()),
+          Expanded(
+              child: SearchResultListView(
+            book: bookModel,
+          )),
         ],
       ),
     );
@@ -31,18 +39,21 @@ class SearchViewBody extends StatelessWidget {
 }
 
 class SearchResultListView extends StatelessWidget {
-  const SearchResultListView({super.key});
+  const SearchResultListView({super.key, required this.book});
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
         padding: EdgeInsets.zero,
-        itemCount: 11,
+        itemCount: 10,
         itemBuilder: ((context, index) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
             // child: BookListViewItem(),
-            child: Text('data'),
+            child: Text(
+              book.volumeInfo.title!,
+            ),
           );
         }));
   }

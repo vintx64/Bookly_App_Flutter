@@ -1,10 +1,13 @@
 import 'package:bookly/Features/Search/data/repos/search_repo.dart';
+import 'package:bookly/core/utils/api_service.dart';
 import 'package:dartz/dartz.dart';
 import 'package:bookly/core/errors/failures.dart';
 import 'package:bookly/Features/home/data/models/bookly_model/book_model.dart';
 import 'package:dio/dio.dart';
 
-class SearchBooksImpl extends SearchBooks {
+class SearchRepoImpl extends SearchRepo {
+  SearchRepoImpl(ApiService apiService);
+
   @override
   Future<Either<Failure, List<BookModel>>> searchBooks(
       {required String bookName}) async {
