@@ -5,27 +5,28 @@ import 'package:bookly/core/errors/failures.dart';
 import 'package:bookly/Features/home/data/models/bookly_model/book_model.dart';
 import 'package:dio/dio.dart';
 
-class SearchRepoImpl extends SearchRepo {
-  SearchRepoImpl(ApiService apiService);
-
+class SearchRepoImpl implements SearchRepo {
+  SearchRepoImpl(this._apiService);
+  final ApiService _apiService;
   @override
   Future<Either<Failure, List<BookModel>>> searchBooks(
       {required String bookName}) async {
     try {
-      var response = await Dio().get(
-          "https://www.googleapis.com/books/v1/volumes?Filtering=free-ebooks &q=intitle:$bookName");
-
+      var data = await _apiService.get(
+          endPoint:
+              'volumes?q=intitle:$bookName&Filtering=free-ebooks&download=epub');
       List<BookModel> books = [];
-      for (var item in response.data["items"]) {
-        books.add(BookModel.fromJson(item));
+      if (data['items'] != null) {
+        for (var item in data['items']) {
+          books.add(BookModel.fromJson(item));
+        }
       }
-
-      return Right(books);
-    } catch (error) {
-      if (error is DioError) {
-        return Left(ServerFailure.fromDioError(error));
+      return right(books);
+    } catch (e) {
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
       } else {
-        return Left(ServerFailure(error.toString()));
+        return left(ServerFailure(e.toString()));
       }
     }
   }
