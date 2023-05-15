@@ -74,19 +74,6 @@ class NewsetBooksListViewItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 3,
-                    ),
-                    if (bookModel.accessInfo?.pdf?.isAvailable == true)
-                      const Text(
-                        'PDF is Available',
-                        style: Styles.textStyly14,
-                      ),
-                    if (bookModel.accessInfo?.pdf?.isAvailable == false)
-                      const Text(
-                        'PDF isn\'t Available',
-                        style: Styles.textStyly14,
-                      ),
                   ],
                 ),
               )

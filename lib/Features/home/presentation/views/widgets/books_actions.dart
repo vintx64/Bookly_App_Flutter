@@ -22,20 +22,19 @@ class BooksAction extends StatelessWidget {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16), bottomLeft: Radius.circular(16)),
           )),
-          if (bookModel.accessInfo?.pdf?.isAvailable == true)
-            Expanded(
-                child: CustomBtn(
-              onPressed: () async {
-                launchCustomUrl(context, bookModel.volumeInfo.previewLink);
-              },
-              fontSize: 16,
-              textBtn: getText(bookModel),
-              backgroundColor: const Color(0xffEF8262),
-              textColor: Colors.white,
-              borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(16),
-                  bottomRight: Radius.circular(16)),
-            ))
+          Expanded(
+              child: CustomBtn(
+            onPressed: () async {
+              launchCustomUrl(context, bookModel.volumeInfo.previewLink);
+            },
+            fontSize: 16,
+            textBtn: getText(bookModel),
+            backgroundColor: const Color(0xffEF8262),
+            textColor: Colors.white,
+            borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(16),
+                bottomRight: Radius.circular(16)),
+          ))
         ],
       ),
     );
