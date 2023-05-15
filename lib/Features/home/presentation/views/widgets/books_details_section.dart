@@ -24,7 +24,7 @@ class BookDetailsSection extends StatelessWidget {
           height: 43,
         ),
         Text(
-          book.volumeInfo.title!,
+          book.volumeInfo.title ?? '',
           style: Styles.textStyly30.copyWith(fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
