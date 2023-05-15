@@ -2,7 +2,7 @@ import 'package:bookly/Features/Search/data/repos/search_repo.dart';
 import 'package:bookly/core/utils/api_service.dart';
 import 'package:dartz/dartz.dart';
 import 'package:bookly/core/errors/failures.dart';
-import 'package:bookly/Features/home/data/models/bookly_model/book_model.dart';
+import 'package:bookly/core/book_model/book_model.dart';
 import 'package:dio/dio.dart';
 
 class SearchRepoImpl implements SearchRepo {

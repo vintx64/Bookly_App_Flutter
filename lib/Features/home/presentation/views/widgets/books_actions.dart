@@ -1,4 +1,4 @@
-import 'package:bookly/Features/home/data/models/bookly_model/book_model.dart';
+import 'package:bookly/core/book_model/book_model.dart';
 import 'package:bookly/core/utils/functions/launch_url.dart';
 import 'package:flutter/material.dart';
 
@@ -13,15 +13,17 @@ class BooksAction extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
         children: [
-          const Expanded(
-              child: CustomBtn(
-            textBtn: 'Free',
-            fontSize: 16,
-            backgroundColor: Colors.white,
-            textColor: Colors.black,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16), bottomLeft: Radius.circular(16)),
-          )),
+          if (bookModel.accessInfo?.pdf?.downloadLink != null)
+            const Expanded(
+                child: CustomBtn(
+              textBtn: 'Free',
+              fontSize: 16,
+              backgroundColor: Colors.white,
+              textColor: Colors.black,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  bottomLeft: Radius.circular(16)),
+            )),
           Expanded(
               child: CustomBtn(
             onPressed: () async {

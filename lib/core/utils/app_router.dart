@@ -1,6 +1,6 @@
 import 'package:bookly/Features/Search/presentation/manager/search_cubit/search_cubit.dart';
 import 'package:bookly/Features/Search/presentation/views/search_view.dart';
-import 'package:bookly/Features/home/data/models/bookly_model/book_model.dart';
+import 'package:bookly/core/book_model/book_model.dart';
 import 'package:bookly/Features/home/data/repos/home_repo_impl.dart';
 import 'package:bookly/Features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly/Features/home/presentation/views/book_details_view.dart';
