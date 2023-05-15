@@ -16,60 +16,82 @@ class NewsetBooksListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView, extra: bookModel);
-      },
-      child: SizedBox(
-        height: 125,
-        child: Row(
-          children: [
-            CustomBookImage(imgUrl: bookModel.volumeInfo.imageLinks.thumbnail),
-            const SizedBox(
-              width: 30,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * .5,
-                    child: Text(
-                      bookModel.volumeInfo.title ?? '',
-                      style: Styles.textStyly20
-                          .copyWith(fontFamily: kGtSectraFine),
-                      maxLines: 2,
+    return Padding(
+      padding: const EdgeInsets.only(right: 24.0, bottom: 24.0),
+      child: GestureDetector(
+        onTap: () {
+          GoRouter.of(context)
+              .push(AppRouter.kBookDetailsView, extra: bookModel);
+        },
+        child: SizedBox(
+          height: 125,
+          child: Row(
+            children: [
+              CustomBookImage(
+                  borderRadius: 8.0,
+                  imgUrl: bookModel.volumeInfo.imageLinks?.thumbnail),
+              const SizedBox(
+                width: 30,
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * .5,
+                      child: Text(
+                        bookModel.volumeInfo.title ?? '',
+                        style: Styles.textStyly20
+                            .copyWith(fontFamily: kGtSectraFine),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    Text(
+                      bookModel.volumeInfo.authors?[0] ?? '',
+                      style: Styles.textStyly14,
+                      maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 3,
-                  ),
-                  Text(
-                    bookModel.volumeInfo.authors?[0] ?? '',
-                    style: Styles.textStyly14,
-                  ),
-                  const SizedBox(
-                    height: 3,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        'Free',
-                        style: Styles.textStyly20
-                            .copyWith(fontWeight: FontWeight.bold),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Free',
+                          style: Styles.textStyly20
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        const Spacer(),
+                        BookRating(
+                          rating: bookModel.volumeInfo.averageRating ?? 0,
+                          count: bookModel.volumeInfo.ratingsCount ?? 0,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    if (bookModel.accessInfo?.pdf?.isAvailable == true)
+                      const Text(
+                        'PDF is Available',
+                        style: Styles.textStyly14,
                       ),
-                      const Spacer(),
-                      BookRating(
-                        rating: bookModel.volumeInfo.averageRating ?? 0,
-                        count: bookModel.volumeInfo.ratingsCount ?? 0,
+                    if (bookModel.accessInfo?.pdf?.isAvailable == false)
+                      const Text(
+                        'PDF isn\'t Available',
+                        style: Styles.textStyly14,
                       ),
-                    ],
-                  ),
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

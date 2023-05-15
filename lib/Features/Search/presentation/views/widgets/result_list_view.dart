@@ -9,6 +9,7 @@ class ResultListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
+        padding: const EdgeInsets.only(left: 24.0),
         physics: const BouncingScrollPhysics(),
         itemCount: books.length,
         itemBuilder: (context, index) =>
