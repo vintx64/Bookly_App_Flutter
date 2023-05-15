@@ -13,7 +13,9 @@ class BooksAction extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
         children: [
+          if (bookModel.accessInfo?.pdf?.isAvailable == )
           const Expanded(
+            
               child: CustomBtn(
             textBtn: 'Free',
             fontSize: 16,
