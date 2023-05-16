@@ -14,29 +14,38 @@ class BooksAction extends StatelessWidget {
       child: Row(
         children: [
           if (bookModel.accessInfo?.pdf?.downloadLink != null)
-            const Expanded(
-                child: CustomBtn(
-              textBtn: 'Free',
-              fontSize: 16,
-              backgroundColor: Colors.white,
-              textColor: Colors.black,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  bottomLeft: Radius.circular(16)),
-            )),
-          Expanded(
+            Expanded(
               child: CustomBtn(
-            onPressed: () async {
-              launchCustomUrl(context, bookModel.volumeInfo.previewLink);
-            },
-            fontSize: 16,
-            textBtn: getText(bookModel),
-            backgroundColor: const Color(0xffEF8262),
-            textColor: Colors.white,
-            borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(16),
-                bottomRight: Radius.circular(16)),
-          ))
+                onPressed: () {
+                  launchCustomUrl(
+                      context, bookModel.accessInfo?.pdf?.downloadLink);
+                },
+                textBtn: 'Download',
+                fontSize: 16,
+                backgroundColor: Colors.white,
+                textColor: Colors.black,
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    bottomLeft: Radius.circular(16)),
+              ),
+            ),
+          Expanded(
+            child: CustomBtn(
+              onPressed: () async {
+                launchCustomUrl(context, bookModel.volumeInfo.previewLink);
+              },
+              fontSize: 16,
+              textBtn: getText(bookModel),
+              backgroundColor: const Color(0xffEF8262),
+              textColor: Colors.white,
+              borderRadius: bookModel.accessInfo?.pdf?.downloadLink == null
+                  ? BorderRadius.circular(16.0)
+                  : const BorderRadius.only(
+                      topRight: Radius.circular(16),
+                      bottomRight: Radius.circular(16),
+                    ),
+            ),
+          ),
         ],
       ),
     );
@@ -44,7 +53,7 @@ class BooksAction extends StatelessWidget {
 
   String getText(BookModel bookModel) {
     if (bookModel.volumeInfo.previewLink == null) {
-      return 'Not Aviliable';
+      return 'Preview Not Aviliable';
     } else {
       return 'Preview';
     }
