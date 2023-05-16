@@ -1,3 +1,4 @@
+import 'package:bookly/Features/home/presentation/views/widgets/books_description.dart';
 import 'package:bookly/core/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 
@@ -52,6 +53,10 @@ class BookDetailsSection extends StatelessWidget {
         BooksAction(
           bookModel: book,
         ),
+        const SizedBox(
+          height: 37,
+        ),
+        BooksDescription(bookModel: book),
       ],
     );
   }
