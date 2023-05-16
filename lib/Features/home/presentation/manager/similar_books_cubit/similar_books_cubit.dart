@@ -9,17 +9,24 @@ part 'similar_books_state.dart';
 class SimilarBooksCubit extends Cubit<SimilarBooksState> {
   SimilarBooksCubit(this.homeRepo) : super(SimilarBooksInitial());
   final HomeRepo homeRepo;
-  Future<void> fetchSimilarBooks({required String category}) async {
+  bool _closed = false;
+
+  @override
+  Future<void> close() {
+    _closed = true;
+    return super.close();
+  }
+
+  Future fetchSimilarBooks({required String category}) async {
+    if (_closed) return;
     emit(SimilarBooksLoading());
     var result = await homeRepo.featchSimilarBooks(category: category);
     result.fold((failure) {
-      emit(
-        SimilarBooksFailure(failure.errMessage),
-      );
+      if (_closed) return;
+      emit(SimilarBooksFailure(failure.errMessage));
     }, (books) {
-      emit(
-        SimilarBooksSucess(books),
-      );
+      if (_closed) return;
+      emit(SimilarBooksSucess(books));
     });
   }
 }
