@@ -1,4 +1,5 @@
 import 'package:bookly/Features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
+import 'package:bookly/Features/home/presentation/views/widgets/featured_books_shimmer.dart';
 import 'package:bookly/core/widgets/custom_error_widget.dart';
 import 'package:bookly/core/widgets/custom_loading_indicator.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +32,9 @@ class FeaturedBooksListView extends StatelessWidget {
                             extra: state.books[index]);
                       },
                       child: CustomBookImage(
-                        imgUrl:
-                            state.books[index].volumeInfo.imageLinks?.thumbnail,
+                        imgUrl: state.books[index].volumeInfo.imageLinks
+                                ?.thumbnail ??
+                            'https://cor-cdn-static.bibliocommons.com/assets/default_covers/icon-book-93409e4decdf10c55296c91a97ac2653.png',
                       ),
                     ),
                   );
@@ -41,7 +43,7 @@ class FeaturedBooksListView extends StatelessWidget {
         } else if (state is FeaturedBooksFailure) {
           return CustomErrorWidget(errMessage: state.errMessage);
         } else {
-          return const CustomLoadingIndicator();
+          return const FeaturedBooksShimmer();
         }
       },
     );
